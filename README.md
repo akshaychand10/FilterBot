@@ -1,3 +1,3 @@
 <h1 align="center">
-  <b>Filters Bot</b>
+  <b>Manual Filter Bot</b>
 </h1>
