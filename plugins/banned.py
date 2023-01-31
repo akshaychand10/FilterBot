@@ -2,6 +2,7 @@ from pyrogram import Client, filters
 from utils import temp
 from pyrogram.types import Message
 from database.users_chats_db import db
+from info import SUPPORT_CHAT
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 async def banned_users(_, client, message: Message):
@@ -20,7 +21,7 @@ disabled_group=filters.create(disabled_chat)
 @Client.on_message(filters.private & banned_user & filters.incoming)
 async def ban_reply(bot, message):
     buttons = [[
-        InlineKeyboardButton('Support Chat', url='https://t.me/SL_Filters_Bot_Support')
+        InlineKeyboardButton('Support Chat', url=SUPPORT_CHAT)
     ]]
     reply_markup=InlineKeyboardMarkup(buttons)
     ban = await db.get_ban_status(message.from_user.id)
@@ -30,7 +31,7 @@ async def ban_reply(bot, message):
 @Client.on_message(filters.group & disabled_group & filters.incoming)
 async def grp_bd(bot, message):
     buttons = [[
-        InlineKeyboardButton('Support Chat', url='https://t.me/SL_Filters_Bot_Support')
+        InlineKeyboardButton('Support Chat', url=SUPPORT_CHAT)
     ]]
     reply_markup=InlineKeyboardMarkup(buttons)
     vazha = await db.get_chat(message.chat.id)
