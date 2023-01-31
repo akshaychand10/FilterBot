@@ -1,0 +1,59 @@
+{
+    "name": "Manual Filter Bot",
+    "description": "I'm manual filter bot with modified features.",
+    "stack": "container",
+    "keywords": [
+      "telegram",
+      "manual-filter",
+      "sri-lanka",
+      "pyrogram",
+      "python"
+    ],
+    "website": "https://github.com/Hansaka-Anuhas/Filters-Bot",
+    "repository": "https://github.com/Hansaka-Anuhas/Filters-Bot",
+    "env": {
+        "BOT_TOKEN": {
+            "description": "Your bot token.",
+            "required": true
+        },
+        "API_ID": {
+            "description": "Get this value from https://my.telegram.org",
+            "required": true
+        },
+        "API_HASH": {
+            "description": "Get this value from https://my.telegram.org",
+            "required": true
+        },
+        "ADMINS": {
+            "description": "ID of Admins. Separate multiple admins by space.",
+            "required": true
+        },
+        "LOG_CHANNEL": {
+            "description": "Bot Logs. Give a channel ID with -100xxxxxxx",
+            "required": true
+        },
+        "AUTH_CHANNEL": {
+            "description": "ID of channel. Make sure bot is admin in this channel. Without subscribing this channel users cannot use bot.",
+            "required": false
+        },
+        "DATABASE_URI": {
+            "description": "MongoDB URI. Get this value from https://www.mongodb.com",
+            "required": true
+        },
+        "DATABASE_NAME": {
+            "description": "Name of the database in MongoDB. Defaults to Cluster0",
+            "value": "Cluster0",
+            "required": false
+        }
+    },
+    "addons": [],
+    "buildpacks": [{
+        "url": "heroku/python"
+    }],
+    "formation": {
+        "worker": {
+            "quantity": 1,
+            "size": "free"
+        }
+    }
+}
