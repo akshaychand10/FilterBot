@@ -9,8 +9,8 @@
       "pyrogram",
       "python"
     ],
-    "website": "https://github.com/Hansaka-Anuhas/Filters-Bot",
-    "repository": "https://github.com/Hansaka-Anuhas/Filters-Bot",
+    "website": "https://github.com/HansakaAnuhas/Manual-Filter-Bot",
+    "repository": "https://github.com/HansakaAnuhas/Manual-Filter-Bot",
     "env": {
         "BOT_TOKEN": {
             "description": "Your bot token.",
