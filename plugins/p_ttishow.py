@@ -2,20 +2,20 @@ import random
 from pyrogram import Client, filters, enums
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from pyrogram.errors.exceptions.bad_request_400 import MessageTooLong, PeerIdInvalid
-from info import ADMINS
+from info import ADMINS, SUPPORT_CHAT
 from database.users_chats_db import db
 from utils import temp, get_settings
 from Script import script
 from pyrogram.errors import ChatAdminRequired
 
 @Client.on_message(filters.new_chat_members & filters.group)
-async def welcome_msg(bot, message):
+async def new_grp_msg(bot, message):
     r_j_check = [u.id for u in message.new_chat_members]
     if temp.ME in r_j_check:
         if message.chat.id in temp.BANNED_CHATS:
             # Inspired from a boat of a banana tree
             buttons = [[
-                InlineKeyboardButton('Support Chat', url='https://t.me/SL_Filters_Bot_Support')
+                InlineKeyboardButton('Support Chat', url=SUPPORT_CHAT)
             ]]
             reply_markup=InlineKeyboardMarkup(buttons)
             k = await message.reply(
@@ -30,7 +30,7 @@ async def welcome_msg(bot, message):
             await bot.leave_chat(message.chat.id)
             return
         buttons = [[
-            InlineKeyboardButton('Support Chat', url='https://t.me/SL_Filters_Bot_Support')
+            InlineKeyboardButton('Support Chat', url=SUPPORT_CHAT)
         ]]
         reply_markup=InlineKeyboardMarkup(buttons)
         r_j = message.from_user.mention if message.from_user else "Dear"
@@ -50,7 +50,7 @@ async def leave_a_chat(bot, message):
         chat = chat
     try:
         buttons = [[
-            InlineKeyboardButton('Support Chat', url='https://t.me/SL_Filters_Bot_Support')
+            InlineKeyboardButton('Support Chat', url=SUPPORT_CHAT)
         ]]
         reply_markup=InlineKeyboardMarkup(buttons)
         await bot.send_message(
@@ -89,7 +89,7 @@ async def disable_chat(bot, message):
     await message.reply('Chat successfully disabled')
     try:
         buttons = [[
-            InlineKeyboardButton('Support Chat', url='https://t.me/SL_Filters_Bot_Support')
+            InlineKeyboardButton('Support Chat', url=SUPPORT_CHAT)
         ]]
         reply_markup=InlineKeyboardMarkup(buttons)
         await bot.send_message(
