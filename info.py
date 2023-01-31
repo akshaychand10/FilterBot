@@ -24,6 +24,9 @@ auth_channel = environ.get('AUTH_CHANNEL', '')
 AUTH_CHANNEL = int(auth_channel) if auth_channel and id_pattern.search(auth_channel) else None
 LOG_CHANNEL = int(environ.get('LOG_CHANNEL', ''))
 
+# Support Group
+SUPPORT_CHAT = environ.get('SUPPORT_CHAT', 'https://t.me/Hansaka_Anuhas')
+
 # MongoDB information
 DATABASE_URL = environ.get('DATABASE_URL', "")
 DATABASE_NAME = environ.get('DATABASE_NAME', "Cluster0")
