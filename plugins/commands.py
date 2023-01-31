@@ -19,13 +19,13 @@ logger = logging.getLogger(__name__)
 @Client.on_message(filters.command("start") & filters.incoming)
 async def start(client, message):
     if AUTH_CHANNEL and not await is_subscribed(client, message):
-        # try:
-            # invite_link = await client.create_chat_invite_link(int(AUTH_CHANNEL))
-        # except ChatAdminRequired:
-            # logger.error("Make sure Bot is admin in Forcesub channel")
-            # return
+        try:
+            invite_link = await client.create_chat_invite_link(int(AUTH_CHANNEL))
+        except ChatAdminRequired:
+            logger.error("Make sure Bot is admin in Forcesub channel")
+            return
         btn = [[
-            InlineKeyboardButton("📢 Updates Channel 📢", url='https://t.me/SL_Filters_Bot_Support')
+            InlineKeyboardButton("📢 Updates Channel 📢", url=invite_link.invite_link)
         ]]
         await message.reply_text(
             text=f"👋 Hello {message.from_user.mention},\n\nPlease join my Updates Channel to use this bot! 😇",
